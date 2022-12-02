@@ -16,9 +16,11 @@ int main(int argc, char **argv)
     {
         while (input_file.getline(line, 4))
         {
-            // Part 1:
+            // Input.
             int i = line[0] - 'A';
             int j = line[2] - 'X';
+
+            // Part 1:
             score[0] += j + 1;
             if (i == j)
             {
