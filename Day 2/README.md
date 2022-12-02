@@ -9,3 +9,5 @@ So instead of just running through the file and tallying it up as I go, I'll go 
 ---
 
 Okay, so I did part 1 and 2, and I was kinda right, but in the end it looks like doing it I could have done it either way. I think my way might be a *tad* bit faster, but I don't think it really matters.
+
+I decided to write an alternative one, where I just did it in a loop. It works just as well and is a bit more compact. Also probably a little bit more readable.

@@ -7,4 +7,4 @@ For simpler challenges, I'll probably utilize Python, but for more complex chall
 The challenges are available [here](https://adventofcode.com/2022/).
 
 01. [Day 1 Writeup](./Day%201/README.md), [Code](./Day%201/day1.py)
-01. [Day 2 Writeup](./Day%202/README.md), [Code](./Day%202/day2.cpp)
+01. [Day 2 Writeup](./Day%202/README.md), [Code](./Day%202/day2.cpp), [Alternative Code](./Day%202/day2_alternative.cpp)
