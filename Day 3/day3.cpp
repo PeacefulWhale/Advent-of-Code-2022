@@ -32,7 +32,7 @@ int main(int argc, char **argv)
                     }
                 }
             }
-            // score[0] += (((item - 96) % 58) + 58) % 58;
+            // score[0] += ((item - 96) + 58) % 58;
             score[0] += 1 + ((item >= 'A' && item <= 'Z') ? (item - 'A') + 26 : item - 'a');
 
             // Part 2:
@@ -55,7 +55,7 @@ int main(int argc, char **argv)
                         }
                     }
                 }
-                // score[1] += (((item - 96) % 58) + 58) % 58;
+                // score[1] += ((item - 96) + 58) % 58;
                 score[1] += 1 + ((item >= 'A' && item <= 'Z') ? (item - 'A') + 26 : item - 'a');
             }
         }
