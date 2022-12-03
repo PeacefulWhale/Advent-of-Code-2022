@@ -41,11 +41,11 @@ int main(int argc, char **argv)
                 offset = 0;
                 item = '\0';
                 // Find common element between all 3 lines.
-                for (int i = 0; i < (int) lines[0].length() && !item; i++)
+                for (int i = 0; i < (int)lines[0].length() && !item; i++)
                 {
-                    for (int j = 0; j < (int) lines[1].length() && !item; j++)
+                    for (int j = 0; j < (int)lines[1].length() && !item; j++)
                     {
-                        for (int w = 0; w < (int) lines[2].length() && !item; w++)
+                        for (int w = 0; w < (int)lines[2].length() && !item; w++)
                         {
                             if (lines[0][i] == lines[1][j] && lines[1][j] == lines[2][w])
                             {
