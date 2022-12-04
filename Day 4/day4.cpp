@@ -27,7 +27,6 @@ int main(int argc, char **argv)
         if ((i <= x && j >= y) || (i >= x && j <= y))
         {
             score[0]++;
-            score[1]++;
         }
 
         //Part 2:
@@ -39,6 +38,6 @@ int main(int argc, char **argv)
     }
 
     std::cout << "Part 1: " << score[0] << std::endl;
-    std::cout << "Part 2: " << score[1] << std::endl;
+    std::cout << "Part 2: " << score[0] + score[1] << std::endl;
     return 0;
 }
