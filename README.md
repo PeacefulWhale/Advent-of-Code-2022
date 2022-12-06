@@ -11,3 +11,4 @@ The challenges are available [here](https://adventofcode.com/2022/).
 03. [Day 3 Writeup](./Day%203/README.md), [Code](./Day%203/day3.cpp)
 04. [Day 4 Writeup](./Day%204/README.md), [Code](./Day%204/day4.cpp)
 05. [Day 5 Writeup](./Day%205/README.md), [Code](./Day%205/day5.cpp)
+06. [Day 6 Writeup](./Day%206/README.md), [Code](./Day%206/day6.cpp)
