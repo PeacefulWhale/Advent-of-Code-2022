@@ -98,7 +98,7 @@ unsigned long part_1(Dir *cur)
 
 unsigned long part_2(Dir *cur, unsigned long target)
 {
-    unsigned long current = -1;
+    unsigned long current = 0;
     if (!cur->file)
     {
         current = cur->size;
