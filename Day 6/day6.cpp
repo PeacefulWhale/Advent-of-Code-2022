@@ -16,6 +16,7 @@ int main(int argc, char **argv)
 
     std::cout << "Part 1: " << get_marker(line, 4) << std::endl;
     std::cout << "Part 2: " << get_marker(line, 14) << std::endl;
+    return 0;
 }
 
 int get_marker(std::string line, int n)
