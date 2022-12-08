@@ -6,16 +6,12 @@
 class Dir
 {
 public:
-    Dir(std::string name, Dir *parent);
-    Dir(std::string name, unsigned long size, Dir *parent);
+    Dir(Dir *parent);
     ~Dir();
-    void add_child(Dir *child);
-    Dir *get_child(std::string name);
+    void add_size(unsigned long size);
     Dir *parent;
     std::vector<Dir *> children;
     unsigned long size;
-    std::string name;
-    bool file;
 };
 
 Dir::~Dir()
@@ -27,71 +23,35 @@ Dir::~Dir()
     }
 }
 
-Dir::Dir(std::string name, Dir *parent)
+Dir::Dir(Dir *parent)
 {
-    this->name = name;
-    this->file = false;
-    this->parent = NULL;
+    this->parent = parent;
     this->size = 0;
     if (parent)
     {
-        parent->add_child(this);
+        parent->children.push_back(this);
     }
 }
 
-Dir::Dir(std::string name, unsigned long size, Dir *parent)
+void Dir::add_size(unsigned long size)
 {
-    this->name = name;
-    this->size = size;
-    this->file = true;
-    this->parent = NULL;
-    if (parent)
+    this->size += size;
+    if (this->parent)
     {
-        parent->add_child(this);
+        this->parent->add_size(size);
     }
-}
-
-void Dir::add_child(Dir *child)
-{
-    child->parent = this;
-    this->children.push_back(child);
-    this->size += child->size;
-    // Add size to all parent nodes.
-    Dir *cur = this->parent;
-    while (cur)
-    {
-        cur->size += child->size;
-        cur = cur->parent;
-    }
-}
-
-Dir *Dir::get_child(std::string name)
-{
-    Dir *child = NULL;
-    for (auto itr : this->children)
-    {
-        if (itr->name == name)
-        {
-            child = itr;
-            break;
-        }
-    }
-    return child;
 }
 
 unsigned long part_1(Dir *cur)
 {
     unsigned long count = 0;
-    if (!cur->file)
+    for (auto itr : cur->children)
     {
-        for (auto itr : cur->children)
-        {
-            count += part_1(itr);
-        }
-        if (cur->size <= 100000)
-        {
-            count += cur->size;
-        }
+        count += part_1(itr);
+    }
+    if (cur->size <= 100000)
+    {
+        count += cur->size;
     }
     return count;
 }
@@ -99,16 +59,13 @@ unsigned long part_1(Dir *cur)
 unsigned long part_2(Dir *cur, unsigned long target)
 {
     unsigned long current = 0;
-    if (!cur->file)
+    current = cur->size;
+    for (auto itr : cur->children)
     {
-        current = cur->size;
-        for (auto itr : cur->children)
+        unsigned long temp = part_2(itr, target);
+        if (temp <= current && temp >= target)
         {
-            unsigned long temp = part_2(itr, target);
-            if (temp <= current && temp >= target)
-            {
-                current = temp;
-            }
+            current = temp;
         }
     }
     return current;
@@ -125,7 +82,7 @@ int main(int argc, char **argv)
     std::string line;
     // The first line is always "$ cd /".
     std::getline(input_file, line);
-    Dir *root = new Dir("/", NULL);
+    Dir *root = new Dir(NULL);
     Dir *cur = root;
     while (std::getline(input_file, line))
     {
@@ -144,30 +101,25 @@ int main(int argc, char **argv)
                     cur = cur->parent;
                 }
                 // Move down one dir.
+                // Except this is actually always a new dir.
                 else
                 {
-                    cur = cur->get_child(dir_name);
+                    cur = new Dir(cur);
                 }
             }
             // List Files / Directories.
-            // I don't actually need to do anything with this however.
+            // I don't need to do anything with this.
         }
         else
         {
-            if (line[0] == 'd')
+            if (line[0] != 'd')
             {
-                // Add the directory.
-                std::string dir_name;
-                ss >> temp >> dir_name;
-                new Dir(dir_name, cur);
-            }
-            else
-            {
-                // Add the file.
+                // Add the file size.
+                // I don't need to keep track of individual files.
                 unsigned long file_size;
                 std::string file_name;
                 ss >> file_size >> file_name;
-                new Dir(file_name, file_size, cur);
+                cur->add_size(file_size);
             }
         }
     }

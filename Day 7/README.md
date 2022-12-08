@@ -11,4 +11,8 @@ With the benefit of hindsight there are a few optimizations I could make:
 - A directory is never `cd`-ed into more than once, so you don't need the directory file names.
 - Files themselves are not used, so you can just add their sizes to the directory that they are contained in.
 
-I'm too lazy to go back and change my code to include these optimizations however.
+Adding in these optimizations (even though I've already gotten the stars for today) cuts down about 50 lines of code, and saves a fair bit of space.
+
+I wonder why the problem didn't state this. I wouldn't be surprised if it was just a quirk of how the input was generated.
+
+I could also probably optimize out the actual tree structure, as I can just have a list of directory sizes in the end... However I'm too lazy to do that right now... Maybe later.
