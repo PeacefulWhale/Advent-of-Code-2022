@@ -2,7 +2,7 @@
 
 For this I have to parse packets. I won't lie, I think that this would be easier in python, where I can have lists of anything. However I think I can work around the need for creating a list of lists (or what have you) for this challenge.
 
-Part one was decently simple once I built up my functions.
+Part one was simple enough once I built up my functions.
 
 Part two requires me to sort all the packets based off the logic for whether or not the packets are ordered. This shouldn't be terribly difficult, as I can utilize an insertion sort with my `compare` function.
 
