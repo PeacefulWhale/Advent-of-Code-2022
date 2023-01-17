@@ -121,10 +121,10 @@ int simulate(std::unordered_set<pos> current_pos, int turns, bool part_one)
             bool SW = !current_pos.contains(elf - north - east);
             bool W = !current_pos.contains(elf - east);
             bool NW = !current_pos.contains(elf + north - east);
+
             // Does the elf need to move?
             if (!(N && NE && E && SE && S && SW && W && NW))
             {
-                finished = false;
                 // Because the elves propose different directions each turn...
                 std::pair<bool, pos> movements[4] = {
                     {N && NE && NW, elf + north},
@@ -132,6 +132,7 @@ int simulate(std::unordered_set<pos> current_pos, int turns, bool part_one)
                     {W && NW && SW, elf - east},
                     {E && NE && SE, elf + east}
                 };
+
                 // Go through the different possible proposals according to the current turn % 4.
                 for (int i = 0; i < 4; ++i)
                 {
@@ -141,12 +142,15 @@ int simulate(std::unordered_set<pos> current_pos, int turns, bool part_one)
                         break;
                     }
                 }
+                finished = false;
             }
 
             // Add the elf's current position and proposed position.
             proposed_pos[old_pos] = elf;
             movement_counts[elf] += 1;
         }
+
+        // Go through all the proposed positions, and see if they can move.
         std::unordered_set<pos> new_pos;
         for (auto itr : proposed_pos)
         {
@@ -183,12 +187,14 @@ int simulate(std::unordered_set<pos> current_pos, int turns, bool part_one)
                 }
             }
         }
+        // Only actually "move" if the simulation must continue.
         if (!finished)
         {
-            // Go through all the proposed positions, and see if they can move.
             current_pos = new_pos;
         }
     }
+
+    // And that's it, the simulation is over.
     if (part_one)
     {
         // Return the number of empty spaces in the smallest rectangle.
