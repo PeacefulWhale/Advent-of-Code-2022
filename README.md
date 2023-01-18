@@ -29,3 +29,7 @@ The challenges are available [here](https://adventofcode.com/2022/).
 21. [Day 21 Writeup](./Day%2021/README.md), [Code](./Day%2021/day21.cpp)
 22. [Day 22 Writeup](./Day%2022/README.md), [Code](./Day%2022/day22.cpp) + [Header File](./Day%2022/day22.hpp)
 23. [Day 23 Writeup](./Day%2023/README.md), [Code](./Day%2023/day23.cpp)
+24. [Day 24 Writeup](./Day%2024/README.md), [Code](./Day%2024/day24.cpp)
+25. [Day 25 Writeup](./Day%2025/README.md), [Code](./Day%2025/day25.cpp)
+
+It's been fun, and I look forward to next year's challenges!
